@@ -8,7 +8,7 @@ music_gen = MusicGenerator()
 def generate():
     data = request.json
     prompt = data.get('prompt')
-    file_name = "generated_track.wav"
+    file_name = "output_audio.wav"
     music_gen.generate_music(prompt, file_name)
     return send_file(file_name, as_attachment=True)
 

@@ -9,7 +9,7 @@ class MusicGenerator:
       print("Loading model ", model_name, "...")
       self.model = MusicGen.get_pretrained(model_name)
 
-    def set_params(self, use_sampling=True, top_k=250, duration=30):
+    def set_params(self, use_sampling=True, top_k=250, duration=15):
         # Set generation parameters
         self.model.set_generation_params(
             use_sampling=use_sampling,

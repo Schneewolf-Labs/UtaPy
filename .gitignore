@@ -1,4 +1,4 @@
-output_audio.wav
+output_audio.*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -1,3 +1,4 @@
-audiocraft==1.2.0a1
+audiocraft==1.1.0
 Flask==3.0.0
+pydub==0.25.1
 torchaudio==2.0.2

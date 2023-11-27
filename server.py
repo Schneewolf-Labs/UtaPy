@@ -1,5 +1,5 @@
 from flask import Flask, request, send_file
-from music_generator import MusicGenerator  # Assuming this is your class
+from music_generator import MusicGenerator
 import threading
 import queue
 
@@ -33,6 +33,6 @@ def generate():
     return send_file("output_audio.ogg", as_attachment=True)
 
 if __name__ == '__main__':
-    port = 5000
+    port = 5002
     print("Starting server on port", port)
     app.run(host='0.0.0.0', port=port, debug=False)

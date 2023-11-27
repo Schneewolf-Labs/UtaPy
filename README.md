@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ## Usage
 
-Run the server. By default the server runs on port 5000.
+Run the server. By default the server runs on port 5002.
 
 ```bash
 python ./server.py

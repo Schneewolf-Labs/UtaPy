@@ -17,14 +17,19 @@ class MusicGenerator:
         self.model = MusicGen.get_pretrained(model_name)
         self.compress_audio = compress_audio
 
-    def set_params(self, use_sampling=True, top_k=250, duration=15):
+    def set_params(self, use_sampling=True, top_k=250, top_p=0.0, temperature=1.0, duration=30.0, cfg_coef=3.0, two_step_cfg=False, extend_stride=18):
         """
         Set generation parameters for the music generation model.
         """
         self.model.set_generation_params(
             use_sampling=use_sampling,
             top_k=top_k,
-            duration=duration
+            top_p=top_p,
+            temperature=temperature,
+            duration=duration,
+            cfg_coef=cfg_coef,
+            two_step_cfg=two_step_cfg,
+            extend_stride=extend_stride
         )
 
     def generate_music(self, prompt, file_name="output_audio.wav"):

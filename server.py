@@ -21,10 +21,9 @@ def worker():
         if task is None:
             break
 
-        prompt, duration, event = task
+        prompt, params, event = task
         try:
-            if duration:
-                music_gen.set_params(duration=duration)
+            music_gen.set_params(**params)
             music_gen.generate_music(prompt)
         except Exception as e:
             logging.error(f"Error in generating music: {e}")
@@ -43,10 +42,21 @@ def generate():
     try:
         data = request.json
         prompt = data.get('prompt')
-        duration = data.get('duration')
-        event = threading.Event()
+        
+        # Extract additional parameters with defaults
+        params = {
+            'duration': data.get('duration', 30.0),
+            'use_sampling': data.get('use_sampling', True),
+            'top_k': data.get('top_k', 250),
+            'top_p': data.get('top_p', 0.0),
+            'temperature': data.get('temperature', 1.0),
+            'cfg_coef': data.get('cfg_coef', 3.0),
+            'two_step_cfg': data.get('two_step_cfg', False),
+            'extend_stride': data.get('extend_stride', 18)
+        }
 
-        task_queue.put((prompt, duration, event))
+        event = threading.Event()
+        task_queue.put((prompt, params, event))
         event.wait()
 
         # Ensure the file exists

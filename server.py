@@ -9,7 +9,8 @@ import os
 logging.basicConfig(level=logging.INFO)
 
 app = Flask(__name__)
-music_gen = MusicGenerator(model_name='facebook/musicgen-stereo-medium', compress_audio=True)
+model_name = os.getenv('UTAPY_MODEL', 'facebook/musicgen-stereo-medium')
+music_gen = MusicGenerator(model_name=model_name, compress_audio=True)
 task_queue = queue.Queue()
 
 def worker():

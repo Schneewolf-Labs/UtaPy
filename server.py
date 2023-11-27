@@ -59,6 +59,6 @@ def generate():
         return "Internal Server Error", 500
 
 if __name__ == '__main__':
-    port = int(os.getenv('PORT', 5002))  # Use environment variable for port, default to 5002
+    port = int(os.getenv('UTAPY_PORT', 5002))  # Use environment variable for port, default to 5002
     logging.info(f"Starting server on port {port}")
     app.run(host='0.0.0.0', port=port, debug=False)
